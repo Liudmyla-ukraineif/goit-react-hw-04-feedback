@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import Section from "./Section/Section"
 import Statistics from "./Statistics/Statistics";
@@ -10,7 +10,7 @@ export default function App(){
   const [neutral, setNeutral]=useState(0);
   const [bad, setBad]=useState(0);
 
-  let options = { good, neutral, bad}
+  const optionsFeedback = { good, neutral, bad }
 
   const onLeaveFeedback = event => {
     switch (event.target.name){
@@ -24,31 +24,27 @@ export default function App(){
 
       case 'bad':
         setBad(prevState => prevState +1);
+        break;
 
       default:
         console.log('default');
     }
   };
   
-  useEffect(()=>{
 
-    const countTotalFeedback = ()=>{
-      return {good} + {neutral} + {bad}
-    };
-  }, [good, neutral, bad])
+  const countTotalFeedback = ()=>{
+    return good + neutral + bad
+  };
 
-  useEffect(()=>{
   
-    const countPositiveFeedbackPercentage =()=> {
-      return +Math.round({good} /countTotalFeedback() * 100)
-    };
-
-  }, [good, neutral, bad])
+  const countPositiveFeedbackPercentage =()=> {
+    return +Math.round(good /countTotalFeedback() * 100)
+  };
 
   return(
     <div>
         <Section title="Please leave feedback">
-          <FeedbackOptions options={options} onLeaveFeedback={onLeaveFeedback} />
+          <FeedbackOptions options={optionsFeedback} onLeaveFeedback={onLeaveFeedback} />
         </Section>
 
         <Section title="Statistics">
