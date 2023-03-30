@@ -1,0 +1,16 @@
+.blockBtn{
+  display: flex;
+  margin-top: 20px;
+}
+.btn{
+  /* display: flex; */
+  padding: 10px 15px;
+  margin-left: 15px;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: capitalize;
+  color: #4f4a4a;
+  border-radius: 4px;
+  border: 1px solid grey;
+  background-color: #f4f1f1;
+}
